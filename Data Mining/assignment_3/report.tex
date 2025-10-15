@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{amsmath} 
+
+\title{Assignment for CS 641 \\ (Data Mining)}
+\author{Diwas Sharma}
+\date{\today}
+\begin{document}
+
+\maketitle
+\newpage
+
+\section{Linear Discriminant Analysis}
+
+\subsection{Linear Discriminant Analysis}
+\subsubsection{Decision boundary}
+For any point $X = \begin{bmatrix}x \\ y\end{bmatrix}$, the general decision boundary of LDA for the given problem is shown in
+equation \ref{eq:lda_equation}.
+
+\begin{equation}
+    \label{eq:lda_equation}
+    (X-\mu_{1})^{T}\Sigma^{-1}(X - \mu_{1}) - (X-\mu_{2})^{T}\Sigma^{-1}(X - \mu_{2}) = 0
+\end{equation}
+
+where, $\mu{1}$ is the average of class 1,
+$\mu{2}$ is the average of class 2, and
+$\Sigma$ is the covariance matrix of the data
+
+The equation can be simplified to obtain equation \ref{eq:lda_equation_simple} which is a linear
+equation in $X$.
+
+\begin{equation}
+    \label{eq:lda_equation_simple}
+    (\Sigma^{-1}\mu_{1} -  \Sigma^{-1}\mu_{2}) X + \frac{1}{2}(-\mu^{T}_{1}\Sigma^{-1}\mu_{1} + \mu^{T}_{2}\Sigma^{-1}\mu_{2}) = 0
+\end{equation}
+
+The decision boundary of LDA obtained for the data is given in equation \ref{eq:lda_boundary}
+whose plot is shown in figure \ref{fig:lda_decision_boundary}.
+
+\begin{equation}
+    \label{eq:lda_boundary}
+    y = -0.2908x + 2.0135
+\end{equation}
+
+\begin{figure}[!ht]
+  \includegraphics[width=\textwidth,height=0.4\textheight,keepaspectratio]{lda.png}
+  \caption{Decision boundary for LDA}
+  \label{fig:lda_decision_boundary}
+\end{figure}
+
+\subsection{Quadratic Discriminant Analysis}
+\subsubsection{Decision boundary}
+Similarly, the general decision boundary of QDA for the given problem is shown in equation \ref{eq:qda_equation}, which is a quadratic equation in X.
+
+\begin{equation}
+    \label{eq:qda_equation}
+    (X-\mu_{1})^{T}\Sigma^{-1}_{1}(X - \mu_{1}) - (X-\mu_{2})^{T}\Sigma^{-1}_{2}(X - \mu_{2})
+    + \frac{1}{2}(-\ln{\begin{vmatrix}\Sigma_{1}\end{vmatrix}} + \ln{\begin{vmatrix}\Sigma_{2}\end{vmatrix}})= 0
+\end{equation}
+
+where, $\Sigma_{1}$ is the covariance of data that belongs to class 1, and $\Sigma_{2}$ is the covariance of data that belongs to class 2.
+
+The decision boundary of QDA obtained for the data is given in equation \ref{eq:qda_boundary} whose plot is shown in figure \ref{fig:qda_decision_boundary}.
+\begin{equation}
+    \label{eq:qda_boundary}
+    2.2167y^{2} + (5.2453x + 5.1203)y + 1.5364x^{2} + -5.2079x + -17.2261 = 0
+\end{equation}
+
+\begin{figure}[!ht]
+  \includegraphics[width=\textwidth,height=0.4\textheight,keepaspectratio]{qda.png}
+  \caption{Decision boundary for QDA}
+  \label{fig:qda_decision_boundary}
+\end{figure}
+
+\end{document}
